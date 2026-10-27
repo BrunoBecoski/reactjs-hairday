@@ -3,39 +3,39 @@
 @theme {
   --color-*: initial;
 
-  --color-yellow-light: "#dbc170";
-  --color-yellow: "#b8952e";
-  --color-yellow-dark: "#846f2e";
+  --color-yellow-light: #dbc170;
+  --color-yellow-base: #b8952e;
+  --color-yellow-dark: #846f2e;
 
-  --color-gray-100: "#f5f4f5";
-  --color-gray-200: "#b2afb6";
-  --color-gray-300: "#98959d";
-  --color-gray-400: "#7a767f";
-  --color-gray-500: "#3e3c41";
-  --color-gray-600: "#2e2c30";
-  --color-gray-700: "#232225";
-  --color-gray-800: "#19181b";
-  --color-gray-900: "#050505";
+  --color-gray-100: #f5f4f5;
+  --color-gray-200: #b2afb6;
+  --color-gray-300: #98959d;
+  --color-gray-400: #7a767f;
+  --color-gray-500: #3e3c41;
+  --color-gray-600: #2e2c30;
+  --color-gray-700: #232225;
+  --color-gray-800: #19181b;
+  --color-gray-900: #050505;
 
   --font-sans: "Catamaran", sans-serif;
 
-  --text-title-lg: 2rem;
-  --text-title-lg--line-height: 1.5rem;
+  --text-title-lg: 2rem; /* 32px */
+  --text-title-lg--line-height: 1.5rem; /* 24px */
   --text-title-lg--font-weight: bold;
 
-  --text-title-md: 1rem;
-  --text-title-md--line-height: 1.5rem;
+  --text-title-md: 1rem; /* 16px */
+  --text-title-md--line-height: 1.5rem; /* 24px */
   --text-title-md--font-weight: bold;
 
-  --text-title-sm: 0.875rem;
-  --text-title-sm--line-height: 1.25rem;
+  --text-title-sm: 0.875rem; /* 14px */
+  --text-title-sm--line-height: 1.25rem; /* 20 px */
   --text-title-sm--font-weight: bold;
 
-  --text-text-md: 1rem;
-  --text-text-md--line-height: 1.5rem;
+  --text-text-md: 1rem; /* 16px */
+  --text-text-md--line-height: 1.5rem; /* 24px */
   --text-text-md--font-weight: normal;
 
-  --text-text-sm: 0.875rem;
-  --text-text-sm--line-height: 1.25rem;
+  --text-text-sm: 0.875rem; /* 14px */
+  --text-text-sm--line-height: 1.25rem; /* 20px */
   --text-text-sm--font-weight: normal;
 }
