@@ -1,4 +1,7 @@
+import { UserSquareIcon } from "@phosphor-icons/react";
+
 import { Button } from "./components/button";
+import { Input } from "./components/input";
 
 import LogoImg from "./assets/logo.svg";
 
@@ -17,9 +20,17 @@ export function App() {
       <p className="text-text-md">Agende um atendimento</p>
       <p className="text-text-sm">Agende um atendimento</p>
 
-      <Button>Agendar</Button>
+      <Button className="w-full">Agendar</Button>
       <Button className="w-9">Agendar</Button>
       <Button disabled>Agendar</Button>
+
+      <Input icon={UserSquareIcon} placeholder="Nome do cliente" />
+      <Input
+        icon={UserSquareIcon}
+        placeholder="Nome do cliente"
+        className="w-32"
+      />
+      <Input icon={UserSquareIcon} value="Bruno Becoski Alves" />
     </div>
   );
 }
