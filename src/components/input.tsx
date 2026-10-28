@@ -6,14 +6,14 @@ interface InputProps extends ComponentProps<"input"> {
 }
 
 export function Input({
-  icon: IconComponent,
   className,
+  icon: IconComponent,
   ...props
 }: InputProps) {
   return (
     <label
       className={`
-        cursor-text border border-gray-500 p-3 rounded-lg focus-within:border-yellow-dark flex items-center gap-2 group
+        cursor-text border-[1.5px] border-gray-500 p-3 rounded-lg focus-within:border-yellow-dark flex items-center gap-2 group
         ${className}
       `}
     >

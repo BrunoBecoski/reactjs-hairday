@@ -1,7 +1,8 @@
-import { UserSquareIcon } from "@phosphor-icons/react";
+import { TrashIcon, UserSquareIcon } from "@phosphor-icons/react";
 
 import { Button } from "./components/button";
 import { Input } from "./components/input";
+import { ButtonIcon } from "./components/buttonIcon";
 
 import LogoImg from "./assets/logo.svg";
 
@@ -31,6 +32,8 @@ export function App() {
         className="w-32"
       />
       <Input icon={UserSquareIcon} value="Bruno Becoski Alves" />
+
+      <ButtonIcon icon={TrashIcon} />
     </div>
   );
 }
