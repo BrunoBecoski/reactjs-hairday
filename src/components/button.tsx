@@ -6,7 +6,11 @@ export function Button({ className, ...props }: ButtonProps) {
   return (
     <button
       className={`
-        cursor-pointer text-title-sm font-bold text-gray-900 bg-yellow-base rounded-lg p-4.5 not-disabled:hover:bg-yellow-light disabled:bg-yellow-dark disabled:cursor-not-allowed transition-colors
+        cursor-pointer rounded-lg p-4.5 text-title-sm font-bold border-2
+        text-gray-900 bg-yellow-base border-yellow-base
+        not-disabled:hover:border-yellow-light 
+        disabled:opacity-30 disabled:cursor-not-allowed 
+        transition-colors
         ${className}
        `}
       {...props}

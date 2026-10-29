@@ -13,7 +13,8 @@ export function ButtonIcon({
   return (
     <button
       className={` 
-        cursor-pointer text-yellow-base hover:text-yellow-light
+        cursor-pointer transition-colors
+        text-yellow-base hover:text-yellow-lights
         ${className}
       `}
       {...props}

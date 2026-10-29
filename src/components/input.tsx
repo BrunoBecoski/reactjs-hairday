@@ -13,13 +13,14 @@ export function Input({
   return (
     <label
       className={`
-        cursor-text border-[1.5px] border-gray-500 p-3 rounded-lg focus-within:border-yellow-dark flex items-center gap-2 group
+        flex items-center gap-2 cursor-text p-3 rounded-lg border 
+        border-gray-500  focus-within:border-yellow-dark
         ${className}
       `}
     >
       <IconComponent size={20} className="text-yellow-base" />
       <input
-        className="w-full focus:outline-0 text-text-md text-gray-200 placeholder:text-gray-400 placeholder:text-text-md focus:gro"
+        className="w-full focus:outline-0 text-text-md text-gray-200 placeholder:text-gray-400 placeholder:text-text-md"
         {...props}
       />
     </label>

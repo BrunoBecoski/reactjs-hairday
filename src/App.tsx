@@ -5,10 +5,11 @@ import { Input } from "./components/input";
 import { ButtonIcon } from "./components/buttonIcon";
 
 import LogoImg from "./assets/logo.svg";
+import { TimeSelect } from "./components/timeSelect";
 
 export function App() {
   return (
-    <div className="bg-gray-800">
+    <div className="bg-gray-800 p-10">
       <img src={LogoImg} />
 
       <div className="size-12 bg-yellow-light"></div>
@@ -34,6 +35,13 @@ export function App() {
       <Input icon={UserSquareIcon} value="Bruno Becoski Alves" />
 
       <ButtonIcon icon={TrashIcon} />
+
+      <div className="flex gap-2">
+        <TimeSelect label="09:00" name="test" disabled />
+        <TimeSelect label="10:00" name="test" />
+        <TimeSelect label="11:00" name="test" />
+        <TimeSelect label="12:00" name="test" />
+      </div>
     </div>
   );
 }
