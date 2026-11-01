@@ -1,14 +1,30 @@
-import type { SubmitEvent } from "react";
+import { useState, type SubmitEvent } from "react";
 import { CalendarBlankIcon, UserSquareIcon } from "@phosphor-icons/react";
 
 import { Input } from "../components/input";
 import { TimeSelect } from "../components/timeSelect";
 import { Button } from "../components/button";
 
-export function Schedule() {
+import type { NewScheduleType, SchedulesType } from "../App";
+
+interface ScheduleProps {
+  schedules: SchedulesType;
+  addSchedule: (newSchedule: NewScheduleType) => void;
+}
+
+export function Schedule({ schedules, addSchedule }: ScheduleProps) {
+  const [dateSelected, setDateSelected] = useState(new Date());
+
   function handleSubmit(event: SubmitEvent<HTMLFormElement>) {
     event.preventDefault();
-    console.log(event);
+
+    const formData = new FormData(event.target);
+
+    addSchedule({
+      date: formData.get("date").toString(),
+      time: formData.get("time").toString(),
+      client: formData.get("client").toString(),
+    });
   }
 
   return (
@@ -28,10 +44,13 @@ export function Schedule() {
         <div>
           <div className="text-title-md text-gray-200 mb-2">Data</div>
           <Input
-            icon={CalendarBlankIcon}
+            name="date"
             type="date"
+            icon={CalendarBlankIcon}
             defaultValue={new Date().toLocaleDateString("sv-SE")}
             min={new Date().toLocaleDateString("sv-SE")}
+            onChange={(event) => setDateSelected(new Date(event.target.value))}
+            required
           />
         </div>
 
@@ -40,33 +59,38 @@ export function Schedule() {
           <div className="space-y-3">
             <span className="text-text-sm text-gray-300 mt-2">Manhã</span>
             <div className="flex flex-wrap gap-2">
-              <TimeSelect name="time" label="09:00" />
-              <TimeSelect name="time" label="10:00" />
-              <TimeSelect name="time" label="11:00" />
-              <TimeSelect name="time" label="12:00" />
+              <TimeSelect name="time" label="09:00" value="09:00" required />
+              <TimeSelect name="time" label="10:00" value="10:00" />
+              <TimeSelect name="time" label="11:00" value="11:00" />
+              <TimeSelect name="time" label="12:00" value="12:00" />
             </div>
 
             <span className="text-text-sm text-gray-300 mt-2">Tarde</span>
             <div className="flex flex-wrap gap-2">
-              <TimeSelect name="time" label="13:00" />
-              <TimeSelect name="time" label="14:00" />
-              <TimeSelect name="time" label="15:00" />
-              <TimeSelect name="time" label="16:00" />
-              <TimeSelect name="time" label="17:00" />
-              <TimeSelect name="time" label="18:00" />
+              <TimeSelect name="time" label="13:00" value="13:00" />
+              <TimeSelect name="time" label="14:00" value="14:00" />
+              <TimeSelect name="time" label="15:00" value="15:00" />
+              <TimeSelect name="time" label="16:00" value="16:00" />
+              <TimeSelect name="time" label="17:00" value="17:00" />
+              <TimeSelect name="time" label="18:00" value="18:00" />
             </div>
 
             <span className="text-text-sm text-gray-300 mt-2">Noite</span>
             <div className="flex flex-wrap gap-2">
-              <TimeSelect name="time" label="19:00" />
-              <TimeSelect name="time" label="20:00" />
+              <TimeSelect name="time" label="19:00" value="19:00" />
+              <TimeSelect name="time" label="20:00" value="20:00" />
             </div>
           </div>
         </div>
 
         <div className="space-y-8">
           <div className="text-title-md text-gray-200 mb-2">Cliente</div>
-          <Input icon={UserSquareIcon} placeholder="Nome do cliente" />
+          <Input
+            name="client"
+            icon={UserSquareIcon}
+            placeholder="Nome do cliente"
+            required
+          />
         </div>
       </div>
 
