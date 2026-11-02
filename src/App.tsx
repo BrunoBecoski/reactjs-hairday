@@ -14,12 +14,12 @@ export type NewScheduleType = Omit<ScheduleType, "id"> & {
   date: string;
 };
 
-export type SchedulesType = Record<string, ScheduleType[]>[];
+export type SchedulesListType = Record<string, ScheduleType[]>[];
 
 export function App() {
-  const [schedules, setSchedules] = useState<SchedulesType>([
+  const [schedulesList, setSchedulesList] = useState<SchedulesListType>([
     {
-      ["2026-11-01"]: [
+      ["2026-12-01"]: [
         {
           id: "1",
           time: "14:00",
@@ -30,11 +30,7 @@ export function App() {
   ]);
 
   function addSchedule(newSchedule: NewScheduleType) {
-    // const findDay = schedules.find((schedule) => {
-    //   const [key] = Object.keys(schedule);
-
-    //   return key === newSchedule.date;
-    // });
+    const objectKey = newSchedule.date;
 
     const newScheduleFormatted = {
       id: Math.random().toString(36).substring(2, 9),
@@ -42,21 +38,33 @@ export function App() {
       client: newSchedule.client,
     };
 
-    // if (findDay) {
+    const scheduleDateExists = schedulesList.some(
+      (schedules) => Object.keys(schedules)[0] === objectKey,
+    );
 
-    // } else {
-    setSchedules((prevState) => [
-      ...prevState,
-      {
-        [newSchedule.date]: [newScheduleFormatted],
-      },
-    ]);
-    // }
+    if (scheduleDateExists) {
+      const schedulesListUpdated = schedulesList.map((schedules) => {
+        if (Object.keys(schedules)[0] === objectKey) {
+          return {
+            [objectKey]: [...schedules[objectKey], newScheduleFormatted],
+          };
+        }
+
+        return schedules;
+      });
+
+      setSchedulesList(schedulesListUpdated);
+    } else {
+      setSchedulesList([
+        ...schedulesList,
+        { [objectKey]: [newScheduleFormatted] },
+      ]);
+    }
   }
 
   useEffect(() => {
-    console.log(schedules);
-  }, [schedules]);
+    console.log(schedulesList);
+  }, [schedulesList]);
 
   return (
     <div className="relative p-3 h-full w-full">
@@ -64,7 +72,7 @@ export function App() {
         <img src={LogoImg} alt="HairDay" />
       </div>
 
-      <Schedule schedules={schedules} addSchedule={addSchedule} />
+      <Schedule schedulesList={schedulesList} addSchedule={addSchedule} />
     </div>
   );
 }

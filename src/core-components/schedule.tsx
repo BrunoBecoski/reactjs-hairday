@@ -5,14 +5,14 @@ import { Input } from "../components/input";
 import { TimeSelect } from "../components/timeSelect";
 import { Button } from "../components/button";
 
-import type { NewScheduleType, SchedulesType } from "../App";
+import type { NewScheduleType, SchedulesListType } from "../App";
 
 interface ScheduleProps {
-  schedules: SchedulesType;
+  schedulesList: SchedulesListType;
   addSchedule: (newSchedule: NewScheduleType) => void;
 }
 
-export function Schedule({ schedules, addSchedule }: ScheduleProps) {
+export function Schedule({ schedulesList, addSchedule }: ScheduleProps) {
   const [dateSelected, setDateSelected] = useState(new Date());
 
   function handleSubmit(event: SubmitEvent<HTMLFormElement>) {
