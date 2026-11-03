@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
 import { Schedule } from "./core-components/schedule";
+import { Appointments } from "./core-components/appointments";
 
 import LogoImg from "./assets/logo.svg";
 
@@ -72,7 +73,11 @@ export function App() {
         <img src={LogoImg} alt="HairDay" />
       </div>
 
-      <Schedule schedulesList={schedulesList} addSchedule={addSchedule} />
+      <div className="flex gap-3">
+        <Schedule schedulesList={schedulesList} addSchedule={addSchedule} />
+
+        <Appointments />
+      </div>
     </div>
   );
 }

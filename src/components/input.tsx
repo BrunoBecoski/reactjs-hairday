@@ -13,7 +13,7 @@ export function Input({
   return (
     <label
       className={`
-        flex items-center gap-2 cursor-text p-3 rounded-lg border 
+        flex items-center gap-2 cursor-text p-3 rounded-lg border h-fit
         border-gray-500  focus-within:border-yellow-dark
         ${className}
       `}

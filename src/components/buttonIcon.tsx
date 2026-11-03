@@ -14,12 +14,12 @@ export function ButtonIcon({
     <button
       className={` 
         cursor-pointer transition-colors
-        text-yellow-base hover:text-yellow-lights
+        text-yellow-base hover:text-yellow-light
         ${className}
       `}
       {...props}
     >
-      <IconComponent size={32} />
+      <IconComponent size={16} />
     </button>
   );
 }
