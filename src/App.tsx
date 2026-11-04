@@ -63,10 +63,6 @@ export function App() {
     }
   }
 
-  useEffect(() => {
-    console.log(schedulesList);
-  }, [schedulesList]);
-
   return (
     <div className="relative p-3 h-full w-full">
       <div className="bg-gray-600 px-5 py-3 rounded-br-xl absolute top-0 left-0">

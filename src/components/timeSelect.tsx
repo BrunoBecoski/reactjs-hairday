@@ -1,10 +1,8 @@
 import type { ComponentProps } from "react";
 
-interface TimeSelectProps extends ComponentProps<"input"> {
-  label: string;
-}
+interface TimeSelectProps extends ComponentProps<"input"> {}
 
-export function TimeSelect({ label, className, ...props }: TimeSelectProps) {
+export function TimeSelect({ className, ...props }: TimeSelectProps) {
   return (
     <label
       className={`
@@ -16,8 +14,8 @@ export function TimeSelect({ label, className, ...props }: TimeSelectProps) {
         ${className}
       `}
     >
-      <span className="text-text-md">{label}</span>
-      <input type="radio" className="hidden" {...props} />
+      <span className="text-text-md">{`${props.value.toString().padStart(2, "0").padEnd(5, ":00")}`}</span>
+      <input type="radio" className="hidden" required {...props} />
     </label>
   );
 }

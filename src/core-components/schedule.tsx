@@ -7,13 +7,32 @@ import { Button } from "../components/button";
 
 import type { NewScheduleType, SchedulesListType } from "../App";
 
+const timesArray = [
+  { value: 9, disabled: false },
+  { value: 10, disabled: false },
+  { value: 11, disabled: false },
+  { value: 12, disabled: false },
+  { value: 13, disabled: false },
+  { value: 14, disabled: false },
+  { value: 15, disabled: false },
+  { value: 16, disabled: false },
+  { value: 17, disabled: false },
+  { value: 18, disabled: false },
+  { value: 19, disabled: false },
+  { value: 20, disabled: false },
+  { value: 21, disabled: false },
+];
+
 interface ScheduleProps {
   schedulesList: SchedulesListType;
   addSchedule: (newSchedule: NewScheduleType) => void;
 }
 
 export function Schedule({ schedulesList, addSchedule }: ScheduleProps) {
-  const [dateSelected, setDateSelected] = useState(new Date());
+  const [dateSelected, setDateSelected] = useState(
+    new Date().toLocaleDateString("sv-SE"),
+  );
+  const [times, setTimes] = useState(timesArray);
 
   function handleSubmit(event: SubmitEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -49,7 +68,11 @@ export function Schedule({ schedulesList, addSchedule }: ScheduleProps) {
             icon={CalendarBlankIcon}
             defaultValue={new Date().toLocaleDateString("sv-SE")}
             min={new Date().toLocaleDateString("sv-SE")}
-            onChange={(event) => setDateSelected(new Date(event.target.value))}
+            onChange={(event) =>
+              setDateSelected(
+                new Date(event.target.value).toLocaleDateString("sv-SE"),
+              )
+            }
             required
           />
         </div>
@@ -59,27 +82,41 @@ export function Schedule({ schedulesList, addSchedule }: ScheduleProps) {
           <div className="space-y-3">
             <span className="text-text-sm text-gray-300 mt-2">Manhã</span>
             <div className="flex flex-wrap gap-2">
-              <TimeSelect name="time" label="09:00" value="09:00" required />
-              <TimeSelect name="time" label="10:00" value="10:00" />
-              <TimeSelect name="time" label="11:00" value="11:00" />
-              <TimeSelect name="time" label="12:00" value="12:00" />
+              {times
+                .filter((time) => time.value >= 9 && time.value <= 12)
+                .map((time) => (
+                  <TimeSelect
+                    key={time.value}
+                    value={time.value}
+                    disabled={time.disabled}
+                  />
+                ))}
             </div>
 
             <span className="text-text-sm text-gray-300 mt-2">Tarde</span>
             <div className="flex flex-wrap gap-2">
-              <TimeSelect name="time" label="13:00" value="13:00" />
-              <TimeSelect name="time" label="14:00" value="14:00" />
-              <TimeSelect name="time" label="15:00" value="15:00" />
-              <TimeSelect name="time" label="16:00" value="16:00" />
-              <TimeSelect name="time" label="17:00" value="17:00" />
-              <TimeSelect name="time" label="18:00" value="18:00" />
+              {times
+                .filter((time) => time.value >= 13 && time.value <= 18)
+                .map((time) => (
+                  <TimeSelect
+                    key={time.value}
+                    value={time.value}
+                    disabled={time.disabled}
+                  />
+                ))}
             </div>
 
             <span className="text-text-sm text-gray-300 mt-2">Noite</span>
             <div className="flex flex-wrap gap-2">
-              <TimeSelect name="time" label="19:00" value="19:00" />
-              <TimeSelect name="time" label="20:00" value="20:00" />
-              <TimeSelect name="time" label="20:00" value="21:00" />
+              {times
+                .filter((time) => time.value >= 19 && time.value <= 21)
+                .map((time) => (
+                  <TimeSelect
+                    key={time.value}
+                    value={time.value}
+                    disabled={time.disabled}
+                  />
+                ))}
             </div>
           </div>
         </div>
