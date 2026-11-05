@@ -3,15 +3,16 @@ import { TrashIcon } from "@phosphor-icons/react";
 import { ButtonIcon } from "./buttonIcon";
 
 interface ClientItemProps {
-  time: string;
-  name: string;
+  id: string;
+  time: number;
+  client: string;
 }
 
-export function ClientItem({ time, name }: ClientItemProps) {
+export function ClientItem({ time, client }: ClientItemProps) {
   return (
     <li className="flex items-center py-1">
-      <strong className="text-title-md text-gray-200 mr-5">{time}</strong>
-      <span className="text-text-md text-gray-200 flex-1">{name}</span>
+      <strong className="text-title-md text-gray-200 mr-5">{`${time.toString().padStart(2, "0").padEnd(5, ":00")}`}</strong>
+      <span className="text-text-md text-gray-200 flex-1">{client}</span>
       <ButtonIcon icon={TrashIcon} />
     </li>
   );

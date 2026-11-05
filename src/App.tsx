@@ -72,7 +72,7 @@ export function App() {
       <div className="flex gap-3">
         <Schedule schedulesList={schedulesList} addSchedule={addSchedule} />
 
-        <Appointments />
+        <Appointments schedulesList={schedulesList} />
       </div>
     </div>
   );
