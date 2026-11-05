@@ -1,4 +1,4 @@
-import { useState, type SubmitEvent } from "react";
+import { useEffect, useState, type SubmitEvent } from "react";
 import { CalendarBlankIcon, UserSquareIcon } from "@phosphor-icons/react";
 
 import { Input } from "../components/input";
@@ -40,11 +40,33 @@ export function Schedule({ schedulesList, addSchedule }: ScheduleProps) {
     const formData = new FormData(event.target);
 
     addSchedule({
-      date: formData.get("date").toString(),
-      time: formData.get("time").toString(),
-      client: formData.get("client").toString(),
+      date: String(formData.get("date")),
+      time: Number(formData.get("time")),
+      client: String(formData.get("client")),
     });
   }
+
+  useEffect(() => {
+    const scheduleDateSelected = schedulesList.find(
+      (schedule) => Object.keys(schedule)[0] === dateSelected,
+    );
+
+    if (scheduleDateSelected) {
+      setTimes([
+        ...timesArray.map((time) => {
+          return {
+            ...time,
+            disabled: scheduleDateSelected[dateSelected].some(
+              (schedule) => schedule.time === time.value,
+            ),
+          };
+        }),
+      ]);
+    } else {
+      setTimes(timesArray);
+    }
+  }, [schedulesList, dateSelected]);
+  c;
 
   return (
     <form
@@ -68,11 +90,7 @@ export function Schedule({ schedulesList, addSchedule }: ScheduleProps) {
             icon={CalendarBlankIcon}
             defaultValue={new Date().toLocaleDateString("sv-SE")}
             min={new Date().toLocaleDateString("sv-SE")}
-            onChange={(event) =>
-              setDateSelected(
-                new Date(event.target.value).toLocaleDateString("sv-SE"),
-              )
-            }
+            onChange={(event) => setDateSelected(event.target.value)}
             required
           />
         </div>
@@ -86,6 +104,7 @@ export function Schedule({ schedulesList, addSchedule }: ScheduleProps) {
                 .filter((time) => time.value >= 9 && time.value <= 12)
                 .map((time) => (
                   <TimeSelect
+                    name="time"
                     key={time.value}
                     value={time.value}
                     disabled={time.disabled}
@@ -99,6 +118,7 @@ export function Schedule({ schedulesList, addSchedule }: ScheduleProps) {
                 .filter((time) => time.value >= 13 && time.value <= 18)
                 .map((time) => (
                   <TimeSelect
+                    name="time"
                     key={time.value}
                     value={time.value}
                     disabled={time.disabled}
@@ -112,6 +132,7 @@ export function Schedule({ schedulesList, addSchedule }: ScheduleProps) {
                 .filter((time) => time.value >= 19 && time.value <= 21)
                 .map((time) => (
                   <TimeSelect
+                    name="time"
                     key={time.value}
                     value={time.value}
                     disabled={time.disabled}

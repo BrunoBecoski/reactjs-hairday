@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { Schedule } from "./core-components/schedule";
 import { Appointments } from "./core-components/appointments";
@@ -7,7 +7,7 @@ import LogoImg from "./assets/logo.svg";
 
 export type ScheduleType = {
   id: string;
-  time: string;
+  time: number;
   client: string;
 };
 
@@ -23,7 +23,7 @@ export function App() {
       ["2026-12-01"]: [
         {
           id: "1",
-          time: "14:00",
+          time: 14,
           client: "Bruno",
         },
       ],
