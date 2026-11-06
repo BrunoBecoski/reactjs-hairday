@@ -30,7 +30,7 @@ export function App() {
     },
   ]);
 
-  function addSchedule(newSchedule: NewScheduleType) {
+  function handleAddSchedule(newSchedule: NewScheduleType) {
     const objectKey = newSchedule.date;
 
     const newScheduleFormatted = {
@@ -44,7 +44,7 @@ export function App() {
     );
 
     if (scheduleDateExists) {
-      const schedulesListUpdated = schedulesList.map((schedules) => {
+      const newSchedulesList = schedulesList.map((schedules) => {
         if (Object.keys(schedules)[0] === objectKey) {
           return {
             [objectKey]: [...schedules[objectKey], newScheduleFormatted],
@@ -54,13 +54,26 @@ export function App() {
         return schedules;
       });
 
-      setSchedulesList(schedulesListUpdated);
+      setSchedulesList(newSchedulesList);
     } else {
       setSchedulesList([
         ...schedulesList,
         { [objectKey]: [newScheduleFormatted] },
       ]);
     }
+  }
+
+  function handleRemoveSchedule(id: string) {
+    const newSchedulesList = schedulesList.map((schedules) => {
+      return Object.fromEntries(
+        Object.entries(schedules).map(([key, array]) => [
+          key,
+          array.filter((schedule) => schedule.id !== id),
+        ]),
+      );
+    });
+
+    setSchedulesList(newSchedulesList);
   }
 
   return (
@@ -70,9 +83,15 @@ export function App() {
       </div>
 
       <div className="flex gap-3">
-        <Schedule schedulesList={schedulesList} addSchedule={addSchedule} />
+        <Schedule
+          schedulesList={schedulesList}
+          handleAddSchedule={handleAddSchedule}
+        />
 
-        <Appointments schedulesList={schedulesList} />
+        <Appointments
+          schedulesList={schedulesList}
+          handleRemoveSchedule={handleRemoveSchedule}
+        />
       </div>
     </div>
   );

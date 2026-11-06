@@ -25,10 +25,10 @@ const timesArray = [
 
 interface ScheduleProps {
   schedulesList: SchedulesListType;
-  addSchedule: (newSchedule: NewScheduleType) => void;
+  handleAddSchedule: (newSchedule: NewScheduleType) => void;
 }
 
-export function Schedule({ schedulesList, addSchedule }: ScheduleProps) {
+export function Schedule({ schedulesList, handleAddSchedule }: ScheduleProps) {
   const [dateSelected, setDateSelected] = useState(
     new Date().toLocaleDateString("sv-SE"),
   );
@@ -39,7 +39,7 @@ export function Schedule({ schedulesList, addSchedule }: ScheduleProps) {
 
     const formData = new FormData(event.target);
 
-    addSchedule({
+    handleAddSchedule({
       date: String(formData.get("date")),
       time: Number(formData.get("time")),
       client: String(formData.get("client")),
@@ -66,7 +66,6 @@ export function Schedule({ schedulesList, addSchedule }: ScheduleProps) {
       setTimes(timesArray);
     }
   }, [schedulesList, dateSelected]);
-  c;
 
   return (
     <form

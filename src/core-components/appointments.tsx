@@ -12,9 +12,13 @@ import type { SchedulesListType, ScheduleType } from "../App";
 
 interface AppointmentsProps {
   schedulesList: SchedulesListType;
+  handleRemoveSchedule: (id: string) => void;
 }
 
-export function Appointments({ schedulesList }: AppointmentsProps) {
+export function Appointments({
+  schedulesList,
+  handleRemoveSchedule,
+}: AppointmentsProps) {
   const [dateSelected, setDateSelected] = useState(
     new Date().toLocaleDateString("sv-SE"),
   );
@@ -85,6 +89,7 @@ export function Appointments({ schedulesList }: AppointmentsProps) {
                         id={appointment.id}
                         time={appointment.time}
                         client={appointment.client}
+                        handleRemoveSchedule={handleRemoveSchedule}
                       />
                     ))}
                 </ul>
@@ -115,6 +120,7 @@ export function Appointments({ schedulesList }: AppointmentsProps) {
                         id={appointment.id}
                         time={appointment.time}
                         client={appointment.client}
+                        handleRemoveSchedule={handleRemoveSchedule}
                       />
                     ))}
                 </ul>
@@ -145,6 +151,7 @@ export function Appointments({ schedulesList }: AppointmentsProps) {
                         id={appointment.id}
                         time={appointment.time}
                         client={appointment.client}
+                        handleRemoveSchedule={handleRemoveSchedule}
                       />
                     ))}
                 </ul>
