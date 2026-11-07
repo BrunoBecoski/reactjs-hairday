@@ -46,10 +46,10 @@ export function Appointments({
   }, [schedulesList, dateSelected]);
 
   return (
-    <section className="flex-1 py-20 px-28">
-      <header className="flex items-center justify-between mb-8">
+    <section className="flex-1 md:py-20 md:px-28 py-10 px-14">
+      <header className="flex md:flex-row flex-col gap-8 items-center justify-between mb-8">
         <div>
-          <h2 className="text-title-lg text-gray-100  mb-4">Sua agenda</h2>
+          <h2 className="text-title-lg text-gray-100 mb-4">Sua agenda</h2>
           <p className="text-text-sm text-gray-300">
             Consulte os seus cortes de cabelo agendados por dia
           </p>
@@ -159,11 +159,16 @@ export function Appointments({
             ) : null}
           </>
         ) : (
-          <h3 className="text-title-md text-gray-200 text-center mt-16">
-            Nenhum cliente agendado para
-            <br />
-            <i>{dateSelected}</i>
-          </h3>
+          <>
+            <h3 className="text-title-md text-gray-100 text-center mt-20">
+              Você ainda não tem agendamento cadastrado nesse dia
+            </h3>
+
+            <p className="text-title-sm text-gray-300 text-center mt-4">
+              {dateSelected.split("-")[2]}/{dateSelected.split("-")[1]}/
+              {dateSelected.split("-")[0]}
+            </p>
+          </>
         )}
       </main>
     </section>

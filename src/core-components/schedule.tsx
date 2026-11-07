@@ -44,6 +44,8 @@ export function Schedule({ schedulesList, handleAddSchedule }: ScheduleProps) {
       time: Number(formData.get("time")),
       client: String(formData.get("client")),
     });
+
+    event.target.reset();
   }
 
   useEffect(() => {
@@ -70,7 +72,7 @@ export function Schedule({ schedulesList, handleAddSchedule }: ScheduleProps) {
   return (
     <form
       onSubmit={handleSubmit}
-      className="bg-gray-700 rounded-xl flex flex-col max-w-lg p-20"
+      className="bg-gray-700 rounded-xl flex flex-col max-w-lg md:p-20 p-14"
     >
       <h2 className="text-title-lg text-gray-100 mb-4">
         Agende um atendimento
