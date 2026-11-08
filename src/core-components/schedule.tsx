@@ -46,6 +46,7 @@ export function Schedule({ schedulesList, handleAddSchedule }: ScheduleProps) {
     });
 
     event.target.reset();
+    setDateSelected(new Date().toLocaleDateString("sv-SE"));
   }
 
   useEffect(() => {
