@@ -1,35 +1,55 @@
-# React + TypeScript + Vite
+<h1 align="center">HairDay</h1>
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+<p align="center">
+  <img alt="cover" src=".github/cover.png" width="100%" />
+</p>
 
-Currently, two official plugins are available:
+> Aplicação web de agendamento para salão de beleza, permitindo o registro de horários divididos por períodos e o gerenciamento diário de agendamentos.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+<p align="center">
+  <img alt="preview" src=".github/preview.gif" width="100%" />
+</p>
 
-## React Compiler
+## 🚀 Funcionalidades
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+- 📅 **Novo Agendamento:** Formulário contendo seleção de data, nome do cliente e escolha de horários divididos por períodos (Manhã, Tarde e Noite).
+- 🔍 **Filtro Diário:** Seletor de data no painel lateral para filtrar e exibir apenas os agendamentos correspondentes ao dia selecionado.
+- 📋 **Listagem por Período:** Agendamentos organizados visualmente em blocos de Manhã, Tarde e Noite para melhor controle da agenda.
+- 🗑️ **Gerenciamento de Agenda:** Botão de exclusão para remover agendamentos cancelados ou finalizados.
+- 📱 **Layout Responsivo & Moderno:** Interface limpa construída com Tailwind CSS v4 e ícones do Phosphor.
 
-Note: This will impact Vite dev & build performances.
-You can also try [the experimental native React Compiler support in plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md#rust-react-compiler) by using `compiler: true` in the plugin options instead of using the Babel plugin.
+## 🛠️ Tecnologias e Ferramentas
 
-## Expanding the Oxlint configuration
+- [React 19](https://react.dev) - Biblioteca para construção de interfaces
+- [TypeScript](https://www.typescriptlang.org) - Tipagem estática para JavaScript
+- [Tailwind CSS v4](https://tailwindcss.com) - Estilização moderna baseada em utilitários
+- [@phosphor-icons/react](https://phosphoricons.com) - Biblioteca de ícones para interface
+- [Vite](https://vite.dev) - Empacotador e servidor de desenvolvimento ultrarrápido
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+## 🚀 Como Executar o Projeto
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
-```
+### Pré-requisitos
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+Antes de começar, certifique-se de ter instalado em sua máquina:
+* [Node.js](https://nodejs.org/)
+* [PNPM](https://pnpm.io/) (ou seu gerenciador de pacotes preferido)
+
+### Passo a Passo
+
+1. **Clone o repositório:**
+  ```bash
+   git clone https://github.com/BrunoBecoski/reactjs-hairday
+   cd reactjs-hairday
+  ```
+
+2.  **Instale as dependências:**
+  ```bash
+    pnpm install
+  ```
+
+3.  **Inicie o servidor de desenvolvimento:**
+  ```bash
+    pnpm dev
+  ```
+
+Acesse http://localhost:5173 (ou a porta indicada no terminal) no seu navegador para ver a aplicação rodando.
